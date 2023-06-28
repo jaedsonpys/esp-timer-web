@@ -51,7 +51,7 @@ function App() {
                         id='timerControlSwitch'
                     />
                 </div>
-                <div className="timerForm">
+                <div className="timerForm" style={timerChecked ? {opacity: '25%'} : null}>
                     <div className="timerArea">
                         <div className='timerSelectorForm min'>
                             <label htmlFor="minTimer">De</label>
