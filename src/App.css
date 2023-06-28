@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
 .controllerBox {
     max-width: max-content;
@@ -72,4 +72,33 @@ input {
 
 .timerArea label {
     font-size: 14px;
+}
+
+.buttonBox {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.updateButton {
+    margin-top: 10px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    background-color: cadetblue;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    border-radius: 10px;
+    height: 35px;
+    width: 100%;
+
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.updateButton:hover {
+    background-color: rgb(66, 116, 117);
 }

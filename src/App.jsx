@@ -51,18 +51,23 @@ function App() {
                         id='timerControlSwitch'
                     />
                 </div>
-                <div className="timerArea">
-                    <div className='timerSelectorForm min'>
-                        <label htmlFor="minTimer">De</label>
-                        <div id="minTimer">
-                            <input type="time" id="startHourSelector" onChange={getInputTimeValue}/>
+                <div className="timerForm">
+                    <div className="timerArea">
+                        <div className='timerSelectorForm min'>
+                            <label htmlFor="minTimer">De</label>
+                            <div id="minTimer">
+                                <input type="time" id="startHourSelector" onChange={getInputTimeValue}/>
+                            </div>
+                        </div>
+                        <div className='timerSelectorForm max'>
+                            <label htmlFor="maxTimer">Até</label>
+                            <div id='maxTimer'>
+                                <input type="time" id="endHourSelector" onChange={getInputTimeValue}/>
+                            </div>
                         </div>
                     </div>
-                    <div className='timerSelectorForm max'>
-                        <label htmlFor="maxTimer">Até</label>
-                        <div id='maxTimer'>
-                            <input type="time" id="endHourSelector" onChange={getInputTimeValue}/>
-                        </div>
+                    <div className="buttonBox">
+                        <button type="button" className='updateButton'>Atualizar</button>
                     </div>
                 </div>
             </div>
