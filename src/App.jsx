@@ -13,6 +13,10 @@ function App() {
     const [endHours, setEndHours] = useState(6);
     const [endMinutes, setEndMinutes] = useState(6);
 
+    useEffect(() => {
+        updateRelayStatus();
+    }, [])
+
     const getInputTimeValue = (e) => {
         const inputID = e.target.id;
         const inputValue = e.target.value;
@@ -30,7 +34,20 @@ function App() {
 
     const controlRelay = (checked) => {
         setRelayChecked(checked);
-        api.post('/device', null, {params: {'status': relayChecked ? 'on' : 'off'}})
+        api.post('/device', null, {params: {'status': relayChecked ? 'off' : 'on'}})
+    }
+
+    const updateRelayStatus = () => {
+        api
+            .get('/device')
+            .then((response) => {
+                const data = response.data;
+                if(data.status === 'on') {
+                    setRelayChecked(true);
+                } else {
+                    setRelayChecked(false);
+                }
+            })
     }
 
     return (
