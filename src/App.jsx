@@ -7,6 +7,8 @@ import './App.css';
 function App() {
     const [relayChecked, setRelayChecked] = useState(false);
     const [timerChecked, setTimerChecked] = useState(false);
+    const [startInput, setStartInput] = useState('22:00');
+    const [endInput, setEndInput] = useState('06:00');
 
     const [startHours, setStartHours] = useState(22);
     const [startMinutes, setStartMinutes] = useState(0);
@@ -27,9 +29,38 @@ function App() {
                 })
         }
 
-        setInterval(() => {
-            updateRelayStatus();
-        }, 1000);
+        const updateLastTimer = () => {
+            api
+                .get('/config')
+                .then((response) => {
+                    const data = response.data;
+                    var [sHour, sMinute] = data.start.split(':');
+                    var [eHour, eMinute] = data.end.split(':');
+
+                    if(sHour.length === 1) {
+                        sHour = '0' + sHour;
+                    }
+                    
+                    if(sMinute.length === 1) {
+                        sMinute = '0' + sMinute;
+                    }
+
+                    if(eHour.length === 1) {
+                        eHour = '0' + eHour;
+                    }
+                    
+                    if(eMinute.length === 1) {
+                        eMinute = '0' + eMinute;
+                    }
+
+                    setStartInput(`${sHour}:${sMinute}`);
+                    setEndInput(`${eHour}:${eMinute}`);
+                })
+        }
+
+        updateLastTimer();
+
+        updateRelayStatus();
     }, [])
 
     const getInputTimeValue = (e) => {
@@ -88,18 +119,18 @@ function App() {
                         id='timerControlSwitch'
                     />
                 </div>
-                <div className="timerForm" style={timerChecked ? {opacity: '25%'} : null}>
+                <div className="timerForm" style={!timerChecked ? {opacity: '25%'} : null}>
                     <div className="timerArea">
                         <div className='timerSelectorForm min'>
                             <label htmlFor="minTimer">De</label>
                             <div id="minTimer">
-                                <input type="time" id="startHourSelector" onChange={getInputTimeValue}/>
+                                <input type="time" id="startHourSelector" value={startInput} onChange={getInputTimeValue}/>
                             </div>
                         </div>
                         <div className='timerSelectorForm max'>
                             <label htmlFor="maxTimer">Até</label>
                             <div id='maxTimer'>
-                                <input type="time" id="endHourSelector" onChange={getInputTimeValue}/>
+                                <input type="time" id="endHourSelector" value={endInput} onChange={getInputTimeValue}/>
                             </div>
                         </div>
                     </div>
