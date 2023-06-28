@@ -1,13 +1,14 @@
 import Switch from 'react-switch';
 import { useState } from 'react';
 
+import './App.css';
+
 function App() {
     const [checked, setChecked] = useState(false);
     
     return (
         <div className='controllerBox'>
             <h1>ESPTimer</h1>
-            <hr/>
             <div className='relayControl'>
                 <label htmlFor="controlSwitch">Ligar/Desligar</label>
                 <Switch
