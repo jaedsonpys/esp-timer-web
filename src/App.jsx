@@ -1,6 +1,7 @@
 import Switch from 'react-switch';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+import api from './services/api';
 import './App.css';
 
 function App() {
@@ -26,14 +27,19 @@ function App() {
             setEndMinutes(parseInt(minutes));
         }
     }
-    
+
+    const controlRelay = (checked) => {
+        setRelayChecked(checked);
+        api.post('/device', null, {params: {'status': relayChecked ? 'on' : 'off'}})
+    }
+
     return (
         <div className='controllerBox'>
             <h1>ESPTimer</h1>
             <div className='switch relayControl'>
                 <label htmlFor="controlSwitch">Ligar/Desligar</label>
                 <Switch
-                    onChange={checked => setRelayChecked(checked)}
+                    onChange={checked => controlRelay(checked)}
                     checked={relayChecked}
                     checkedIcon={false}
                     uncheckedIcon={false}
