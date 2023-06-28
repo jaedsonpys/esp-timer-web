@@ -7,8 +7,8 @@ import './App.css';
 function App() {
     const [relayChecked, setRelayChecked] = useState(false);
     const [timerChecked, setTimerChecked] = useState(false);
-    const [startInput, setStartInput] = useState('22:00');
-    const [endInput, setEndInput] = useState('06:00');
+    const [startInput, setStartInput] = useState('00:00');
+    const [endInput, setEndInput] = useState('00:00');
 
     const [startHours, setStartHours] = useState(22);
     const [startMinutes, setStartMinutes] = useState(0);
@@ -69,12 +69,15 @@ function App() {
 
         const [hours, minutes] = inputValue.split(':')
 
+
         if(inputID === 'startHourSelector') {
             setStartHours(parseInt(hours));
             setStartMinutes(parseInt(minutes));
+            setStartInput(inputValue);
         } else {
             setEndHours(parseInt(hours));
             setEndMinutes(parseInt(minutes));
+            setEndInput(inputValue);
         }
     }
 
