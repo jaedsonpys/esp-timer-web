@@ -52,6 +52,18 @@ function App() {
         api.post('/device', null, {params: {'status': relayChecked ? 'off' : 'on'}})
     }
 
+    const setTimer = () => {
+        const params = {
+            sh: startHours,
+            sm: startMinutes,
+            eh: endHours,
+            em: endMinutes,
+        }
+
+        api.post('/config', null, {params});
+        alert('Temporizador definido!');
+    }
+
     return (
         <div className='controllerBox'>
             <h1>ESPTimer</h1>
@@ -92,7 +104,7 @@ function App() {
                         </div>
                     </div>
                     <div className="buttonBox">
-                        <button type="button" className='updateButton'>Atualizar</button>
+                        <button type="button" className='updateButton' onClick={setTimer}>Atualizar</button>
                     </div>
                 </div>
             </div>
