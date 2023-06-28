@@ -15,6 +15,10 @@ function App() {
 
     useEffect(() => {
         updateRelayStatus();
+
+        setInterval(() => {
+            updateRelayStatus();
+        }, 1000);
     }, [])
 
     const getInputTimeValue = (e) => {
