@@ -4,7 +4,8 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-    const [checked, setChecked] = useState(false);
+    const [relayChecked, setRelayChecked] = useState(false);
+    const [timerChecked, setTimerChecked] = useState(false);
     
     return (
         <div className='controllerBox'>
@@ -12,8 +13,8 @@ function App() {
             <div className='switch relayControl'>
                 <label htmlFor="controlSwitch">Ligar/Desligar</label>
                 <Switch
-                    onChange={checked => setChecked(checked)}
-                    checked={checked}
+                    onChange={checked => setRelayChecked(checked)}
+                    checked={relayChecked}
                     checkedIcon={false}
                     uncheckedIcon={false}
                     id='controlSwitch'
@@ -23,8 +24,8 @@ function App() {
                 <div className='switch timerControl'>
                     <label htmlFor="timerControlSwitch">Temporizador</label>
                     <Switch
-                        onChange={checked => setChecked(checked)}
-                        checked={checked}
+                        onChange={checked => setTimerChecked(checked)}
+                        checked={timerChecked}
                         checkedIcon={false}
                         uncheckedIcon={false}
                         id='timerControlSwitch'
