@@ -58,8 +58,21 @@ function App() {
                 })
         }
 
-        updateLastTimer();
+        const updateTimerStatus = () => {
+            api
+                .get('/status')
+                .then((response) => {
+                    const data = response.data;
+                    if(data.status == "on") {
+                        setTimerChecked(true);
+                    } else {
+                        setTimerChecked(false);
+                    }
+                })
+        }
 
+        updateTimerStatus();
+        updateLastTimer();
         updateRelayStatus();
     }, [])
 
@@ -83,6 +96,11 @@ function App() {
     const controlRelay = (checked) => {
         setRelayChecked(checked);
         api.post('/device', null, {params: {'status': relayChecked ? 'off' : 'on'}})
+    }
+
+    const setTimerStatus = (checked) => {
+        setTimerChecked(checked);
+        api.post('/status', null, {params: {'status': timerChecked ? 'off': 'on'}})
     }
 
     const setTimer = () => {
@@ -114,7 +132,7 @@ function App() {
                 <div className='switch timerControl'>
                     <label htmlFor="timerControlSwitch">Temporizador</label>
                     <Switch
-                        onChange={checked => setTimerChecked(checked)}
+                        onChange={checked => setTimerStatus(checked)}
                         checked={timerChecked}
                         checkedIcon={false}
                         uncheckedIcon={false}
