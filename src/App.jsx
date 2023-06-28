@@ -9,7 +9,7 @@ function App() {
     return (
         <div className='controllerBox'>
             <h1>ESPTimer</h1>
-            <div className='relayControl'>
+            <div className='switch relayControl'>
                 <label htmlFor="controlSwitch">Ligar/Desligar</label>
                 <Switch
                     onChange={checked => setChecked(checked)}
@@ -19,8 +19,8 @@ function App() {
                     id='controlSwitch'
                 />
             </div>
-            <div className='timerArea'>
-                <div className='timerControl'>
+            <div className="timerControlArea">
+                <div className='switch timerControl'>
                     <label htmlFor="timerControlSwitch">Temporizador</label>
                     <Switch
                         onChange={checked => setChecked(checked)}
@@ -30,19 +30,17 @@ function App() {
                         id='timerControlSwitch'
                     />
                 </div>
-                <div className="timerSelectorArea">
-                    <div className='timerSelectorForm'>
-                        <label htmlFor="minTimer">Liga às</label>
+                <div className="timerArea">
+                    <div className='timerSelectorForm min'>
+                        <label htmlFor="minTimer">De</label>
                         <div id="minTimer">
-                            <input type="number" min={0} max={23} id="hourSelector" placeholder='Hora'/>
-                            <input type="number" min={0} max={59} id="minuteSelector" placeholder='Minutos'/>
+                            <input type="time" id="startHourSelector"/>
                         </div>
                     </div>
-                    <div className='timerSelectorForm'>
-                        <label htmlFor="maxTimer">Desliga às</label>
+                    <div className='timerSelectorForm max'>
+                        <label htmlFor="maxTimer">Até</label>
                         <div id='maxTimer'>
-                            <input type="number" min={0} max={23} id="hourSelector" placeholder='Hora'/>
-                            <input type="number" min={0} max={59} id="minuteSelector" placeholder='Minutos'/>
+                            <input type="time" id="endHourSelector"/>                            
                         </div>
                     </div>
                 </div>
