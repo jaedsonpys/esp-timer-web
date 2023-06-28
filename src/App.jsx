@@ -67,8 +67,7 @@ function App() {
         const inputID = e.target.id;
         const inputValue = e.target.value;
 
-        const [hours, minutes] = inputValue.split(':')
-
+        const [hours, minutes] = inputValue.split(':');
 
         if(inputID === 'startHourSelector') {
             setStartHours(parseInt(hours));
