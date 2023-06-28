@@ -100,7 +100,7 @@ function App() {
 
     const setTimerStatus = (checked) => {
         setTimerChecked(checked);
-        api.post('/status', null, {params: {'status': timerChecked ? 'off': 'on'}})
+        api.post('/status', null, {params: {'status': timerChecked ? 'on': 'off'}})
     }
 
     const setTimer = () => {
