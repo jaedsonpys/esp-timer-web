@@ -55,13 +55,13 @@ function App() {
                     <div className='timerSelectorForm min'>
                         <label htmlFor="minTimer">De</label>
                         <div id="minTimer">
-                            <input type="time" id="startHourSelector"/>
+                            <input type="time" id="startHourSelector" onChange={getInputTimeValue}/>
                         </div>
                     </div>
                     <div className='timerSelectorForm max'>
                         <label htmlFor="maxTimer">Até</label>
                         <div id='maxTimer'>
-                            <input type="time" id="endHourSelector"/>                            
+                            <input type="time" id="endHourSelector" onChange={getInputTimeValue}/>
                         </div>
                     </div>
                 </div>
