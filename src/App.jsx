@@ -5,7 +5,7 @@ function App() {
     const [checked, setChecked] = useState(false);
     
     return (
-        <>
+        <div className='controllerBox'>
             <h1>ESPTimer</h1>
             <hr/>
             <div className='relayControl'>
@@ -46,7 +46,7 @@ function App() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
