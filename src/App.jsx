@@ -110,7 +110,7 @@ function App() {
             em: endMinutes,
         }
 
-        api.post('/config', null, {params});
+        api.post('/timer', null, {params});
         alert('Temporizador definido!');
     }
 
