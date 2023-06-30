@@ -5,7 +5,7 @@ import api from './services/api';
 import './App.css';
 
 function App() {
-    const [relayChecked, setRelayChecked] = useState(false);
+    const [deviceChecked, setDeviceChecked] = useState(false);
     const [timerChecked, setTimerChecked] = useState(false);
     const [startInput, setStartInput] = useState('00:00');
     const [endInput, setEndInput] = useState('00:00');
@@ -22,9 +22,9 @@ function App() {
                 .then((response) => {
                     const data = response.data;
                     if(data.status === 'on') {
-                        setRelayChecked(true);
+                        setDeviceChecked(true);
                     } else {
-                        setRelayChecked(false);
+                        setDeviceChecked(false);
                     }
                 })
         }
@@ -96,9 +96,9 @@ function App() {
         }
     }
 
-    const controlRelay = (checked) => {
-        setRelayChecked(checked);
-        api.post('/device', null, {params: {'status': relayChecked ? 'off' : 'on'}})
+    const controlDevice = (checked) => {
+        setDeviceChecked(checked);
+        api.post('/device', null, {params: {'status': deviceChecked ? 'off' : 'on'}})
     }
 
     const setTimerStatus = (checked) => {
@@ -124,8 +124,8 @@ function App() {
             <div className='switch relayControl'>
                 <label htmlFor="controlSwitch">Ligar/Desligar</label>
                 <Switch
-                    onChange={checked => controlRelay(checked)}
-                    checked={relayChecked}
+                    onChange={checked => controlDevice(checked)}
+                    checked={deviceChecked}
                     checkedIcon={false}
                     uncheckedIcon={false}
                     id='controlSwitch'
