@@ -63,7 +63,7 @@ function App() {
                 .get('/timer')
                 .then((response) => {
                     const data = response.data;
-                    setTimerChecked(data.status);
+                    setTimerChecked(data.timerActive);
                 })
         }
 
@@ -98,13 +98,13 @@ function App() {
     }
 
     const setTimerStatus = (checked) => {
-        setTimerChecked(checked);
-
         if(checked) {
             setTimer();
         } else {
             api.post('/timer', null, {params: {'status': 'off'}})
         }
+
+        setTimerChecked(checked);
     }
 
     const setTimer = () => {
