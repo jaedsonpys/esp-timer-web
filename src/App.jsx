@@ -71,9 +71,12 @@ function App() {
                 })
         }
 
-        updateTimerStatus();
         updateLastTimer();
-        updateRelayStatus();
+
+        setInterval(() => {
+            updateTimerStatus();
+            updateRelayStatus();
+        }, 1000);
     }, [])
 
     const getInputTimeValue = (e) => {
