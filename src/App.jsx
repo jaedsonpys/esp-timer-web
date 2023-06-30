@@ -31,7 +31,7 @@ function App() {
 
         const updateLastTimer = () => {
             api
-                .get('/config')
+                .get('/timer')
                 .then((response) => {
                     const data = response.data;
                     var [sHour, sMinute] = data.start.split(':');
@@ -60,14 +60,10 @@ function App() {
 
         const updateTimerStatus = () => {
             api
-                .get('/status')
+                .get('/timer')
                 .then((response) => {
                     const data = response.data;
-                    if(data.status == "on") {
-                        setTimerChecked(true);
-                    } else {
-                        setTimerChecked(false);
-                    }
+                    setTimerChecked(data.status);
                 })
         }
 
